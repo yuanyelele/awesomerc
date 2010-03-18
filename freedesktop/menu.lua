@@ -12,15 +12,15 @@ function new()
 	-- source code.
 	local programs = {}
 	programs['AudioVideo'] = {}
-	--programs['Audio'] = {}
-	--programs['Video'] = {}
+	programs['Audio'] = {}
+	programs['Video'] = {}
 	programs['Development'] = {}
-	--programs['Education'] = {}
-	--programs['Game'] = {}
+	programs['Education'] = {}
+	programs['Game'] = {}
 	programs['Graphics'] = {}
 	programs['Network'] = {}
 	programs['Office'] = {}
-	--programs['Settings'] = {}
+	programs['Settings'] = {}
 	programs['System'] = {}
 	programs['Utility'] = {}
 	programs['Other'] = {}
@@ -50,17 +50,17 @@ function new()
 	end
 
 	local menu = {
-		{ "Accessories", programs["Utility"], utils.lookup_icon({ icon = 'applications-accessories.png' }) },
+		{ "Multimedia", programs["AudioVideo"], utils.lookup_icon({ icon = 'applications-multimedia.png' }) },
 		{ "Development", programs["Development"], utils.lookup_icon({ icon = 'applications-development.png' }) },
 		{ "Education", programs["Education"], utils.lookup_icon({ icon = 'applications-science.png' }) },
 		{ "Games", programs["Game"], utils.lookup_icon({ icon = 'applications-games.png' }) },
 		{ "Graphics", programs["Graphics"], utils.lookup_icon({ icon = 'applications-graphics.png' }) },
 		{ "Internet", programs["Network"], utils.lookup_icon({ icon = 'applications-internet.png' }) },
-		{ "Multimedia", programs["AudioVideo"], utils.lookup_icon({ icon = 'applications-multimedia.png' }) },
 		{ "Office", programs["Office"], utils.lookup_icon({ icon = 'applications-office.png' }) },
-		{ "Other", programs["Other"], utils.lookup_icon({ icon = 'applications-other.png' }) },
 		{ "Settings", programs["Settings"], utils.lookup_icon({ icon = 'applications-utilities.png' }) },
 		{ "System Tools", programs["System"], utils.lookup_icon({ icon = 'applications-system.png' }) },
+		{ "Accessories", programs["Utility"], utils.lookup_icon({ icon = 'applications-accessories.png' }) },
+		{ "Other", programs["Other"], utils.lookup_icon({ icon = 'applications-other.png' }) },
 	}
 
 	-- Removing empty entries from menu

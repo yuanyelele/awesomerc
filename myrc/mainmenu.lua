@@ -47,12 +47,12 @@ function build()
 		{ "Themes", themes.menu() },
 	}
 
-    local mymainmenu_items_head = {
-        { "Awesome", myawesomemenu, beautiful.awesome_icon },
-        { "Terminal", terminal, freedesktop_utils.lookup_icon({icon = 'terminal'}) },
-        { "Browser", browser, freedesktop_utils.lookup_icon({icon = 'browser'}) },
-        {"", nil, nil} --separator
-    }
+	local mymainmenu_items_head = {
+		{ "Awesome", myawesomemenu, beautiful.awesome_icon },
+		{ "Terminal", terminal, freedesktop_utils.lookup_icon({icon = 'terminal'}) },
+		{ "Browser", browser, freedesktop_utils.lookup_icon({icon = 'web-browser'}) },
+		{"", nil, nil} --separator
+	}
 
     local mymainmenu_items_tail = {
         { "", nil, nil}, --separator
