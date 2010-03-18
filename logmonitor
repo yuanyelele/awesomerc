@@ -19,7 +19,7 @@
 this=$0
 
 # Log to watch
-log="/var/log/messages"
+log="/var/log/everything/current"
 
 # Popup time
 infoPopupTime=5000
