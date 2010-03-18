@@ -26,7 +26,11 @@ function new()
 	programs['Other'] = {}
 
 
-	for i, program in ipairs(utils.parse_dir('/usr/share/applications/')) do
+	local entries = utils.parse_dir('/usr/share/applications/');
+	for k,v in ipairs(utils.parse_dir('~/.local/share/applications/')) do
+		table.insert(entries, v)
+	end
+	for i, program in ipairs(entries) do
 
 		-- check whether to include in the menu
 		if program.show and program.Name and program.cmdline then

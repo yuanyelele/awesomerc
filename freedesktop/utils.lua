@@ -96,6 +96,10 @@ function parse(file, requested_icon_sizes)
         program.show = false
     end
 
+    if program.NoDisplay == "true" then
+      program.show = false
+    end
+
     -- Look up for a icon.
     if program.Icon then
         program.icon_path = lookup_icon({ icon = program.Icon, icon_sizes = (requested_icon_sizes or all_icon_sizes) })
