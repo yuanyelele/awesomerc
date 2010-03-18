@@ -25,26 +25,27 @@ end
 -- Note: Uses beautiful.icon_theme and beautiful.icon_theme_size
 -- env - table with string constants - command line to different apps
 function build()
-    local terminal = (env.terminal or "xterm") .. " "
-    local man = (env.man or "xterm -e man") .. " "
-    local editor = (env.editor or "xterm -e " .. (os.getenv("EDITOR") or "vim")) .. " "
-    local browser = (env.browser or "firefox") .. " "
-    local run = (env.run or "gmrun")
+	local terminal = (env.terminal or "sakura") .. " "
+	local man = (env.man or "sakura -e 'man ") .. " "
+	local editor = (env.editor or "xterm -e '" .. (os.getenv("EDITOR") or "vim")) .. " "
+	local browser = (env.browser or "firefox") .. " "
+	local run = (env.run or "gmrun")
 
     freedesktop_utils.terminal = terminal
     freedesktop_utils.icon_theme = beautiful.icon_theme 
     freedesktop_utils.icon_sizes = {beautiful.icon_theme_size}
 
-    local myawesomemenu = { 
-        { "Manual", man .. "awesome", freedesktop_utils.lookup_icon({ icon = 'help' }) },
-        { "Edit config", editor .. awful.util.getdir("config") .. "/rc.lua", 
-            freedesktop_utils.lookup_icon({ icon = 'package_settings' }) 
-        },
-        { "Edit theme", editor .. awful.util.getdir("config") .. "/current_theme" ,
-            freedesktop_utils.lookup_icon({ icon = 'package_settings' }) 
-        },
-        { "Themes", themes.menu() }, 
-    }
+	local myawesomemenu = { 
+		{ "Manual", man .. "awesome'", freedesktop_utils.lookup_icon({ icon = 'help' }) 
+		},
+		{ "Edit config", editor .. awful.util.getdir("config") .. "/rc.lua'", 
+			freedesktop_utils.lookup_icon({ icon = 'package_settings' }) 
+		},
+		{ "Edit theme", editor .. awful.util.getdir("config") .. "/current_theme'" ,
+			freedesktop_utils.lookup_icon({ icon = 'package_settings' }) 
+		},
+		{ "Themes", themes.menu() },
+	}
 
     local mymainmenu_items_head = {
         { "Awesome", myawesomemenu, beautiful.awesome_icon },

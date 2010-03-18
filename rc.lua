@@ -179,18 +179,17 @@ altkey = "Mod1"
 
 -- Helper variables
 env = {
-    browser = "firefox ",
-    man = "xterm -e man ",
-    terminal = "xterm ", 
-    screen = "xterm -e screen",
-    terminal_root = "xterm -e su -c screen",
-    im = "pidgin ",
-    editor = os.getenv("EDITOR") or "xterm -e vim ",
-    home_dir = os.getenv("HOME"),
-    music_show = "gmpc --replace",
-    music_hide = "gmpc --quit",
-    run = "gmrun",
-    locker="xlock"
+	browser = "uzbl-browser",
+	man = "sakura -e 'man ",
+	terminal = "sakura", 
+	screen = "sakura -e screen",
+	terminal_root = "sakura -e 'su -c screen'",
+	im = "pidgin",
+	editor = "sakura -e 'vim ",
+	home_dir = os.getenv("HOME"),
+	music_show = "gmpc --replace",
+	music_hide = "gmpc --quit",
+	run = "gmrun"
 }
 
 -- Pipelets

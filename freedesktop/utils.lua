@@ -6,7 +6,7 @@ local ipairs = ipairs
 
 module("freedesktop.utils")
 
-terminal = 'xterm'
+terminal = 'sakura'
 
 icon_theme = nil
 
@@ -117,7 +117,7 @@ function parse(file, requested_icon_sizes)
             cmdline = cmdline:gsub('%%i', '--icon ' .. program.icon_path)
         end
         if program.Terminal == "true" then
-            cmdline = terminal .. ' -e ' .. cmdline
+            cmdline = terminal .. " -e '" .. cmdline .. "'"
         end
         program.cmdline = cmdline
     end
