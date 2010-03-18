@@ -1,13 +1,13 @@
 #!/bin/sh
 
 while true ; do
-	acpitool -b | while read line ; do
+	acpi -b | while read line ; do
 
-		batnum=`echo $line |  sed 's/.*#\(.\).*/\1/'`
-		percent=`echo $line | sed 's/.*\:[^,]*, \([^,]*\).*/\1/'`
-		if echo $line | grep -q discharging ; then
+		batnum=`echo $line |  sed 's/^Battery \(.\).*/\1/'`
+		percent=`echo $line | sed 's/.* \([0-9]*%\).*/\1/'`
+		if echo $line | grep -q Discharging ; then
 			color='#CC7777'
-			tleft=`echo $line | sed 's/.*\:[^,]*, [^,]*, \(..:..\).*/\1/'`
+			tleft=`echo $line | sed 's/.*\(..:..:..\).*/\1/'`
 		else
 			color='#77CC77'
 		fi
