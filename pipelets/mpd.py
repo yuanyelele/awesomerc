@@ -1,0 +1,78 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+# IMPORTS
+import sys
+import time
+
+from mpd import (MPDClient, CommandError)
+from socket import error as SocketError
+
+HOST = '192.168.20.126'
+PORT = '6600'
+
+def parse_time(current, total):
+	current_min = current / 60
+	current_sec = current % 60
+	total_min = total / 60
+	total_sec = total % 60
+	return '{0:02}:{1:02}/{2:02}:{3:02}'.format(current_min, current_sec,
+						    total_min, total_sec)
+
+def main():
+	client = MPDClient()
+	try:
+		client.connect(HOST, PORT)
+	except SocketError:
+		sys.exit(1)
+
+
+	max_artist_len = 30
+	max_album_len = 80
+	max_title_len = 80
+
+	artist_index = 0
+	album_index = 0
+	title_index = 0
+	
+
+	while True:
+		partition = client.status()['time'].partition(':')
+		current_time = int(partition[0])
+		total_time = int(partition[2])
+
+		song = client.currentsong()
+		track = int(song['track'])
+		artist_full = song['artist']
+		album_full = song['album']
+		title_full = song['title']
+
+		if artist_index + max_artist_len > len(artist_full):
+			artist_index = 0
+		if album_index + max_album_len > len(album_full):
+			album_index = 0
+		if title_index + max_title_len > len(title_full):
+			title_index = 0
+
+		artist = artist_full[artist_index:][:max_artist_len]
+		album = album_full[album_index:][:max_album_len]
+		title = title_full[title_index:][:max_title_len]
+
+		all = '{0}/{1}:[{2:02}]{3}'.format(artist, album, track, title)
+		pos = len(all) * current_time / total_time
+		print('<span font=\'DejaVu Sans Mono 8\'>'
+		      '<span color=\'#cccc77\'>' + all[:pos] + '</span>'
+		      '<span color=\'#cc77aa\'>' + all[pos:] + '</span>'
+		      '</span>')
+		sys.stdout.flush()
+
+		time.sleep(1)
+		artist_index += 1
+		album_index += 1
+		title_index += 1
+
+	client.disconnect()
+	sys.exit(0)
+
+if __name__ == '__main__':
+	main()
