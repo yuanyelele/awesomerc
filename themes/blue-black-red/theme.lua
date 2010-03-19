@@ -78,7 +78,7 @@ theme.titlebar_maximized_button_normal_active = theme.path .. "/titlebar/maximiz
 theme.titlebar_maximized_button_focus_active = theme.path .. "/titlebar/maximized_focus_active.png"
 
 -- You can use your own command to set your wallpaper
-theme.wallpaper_cmd = { "awsetbg " .. theme.config .. "/wallpapers/vladstudio-1.jpg" }
+theme.wallpaper_cmd = { "awsetbg " .. theme.config .. "/wallpapers/paper.jpg" }
 
 -- You can use your own layout icons like this:
 theme.layout_dwindle = "/usr/share/awesome/themes/default/layouts/dwindlew.png"
