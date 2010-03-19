@@ -37,7 +37,13 @@ def main():
 	
 
 	while True:
-		partition = client.status()['time'].partition(':')
+		status = client.status()
+		while status['state'] == 'stop':
+			print 'stop'
+			sys.stdout.flush()
+			time.sleep(1)
+			status = client.status()
+		partition = status['time'].partition(':')
 		current_time = int(partition[0])
 		total_time = int(partition[2])
 
