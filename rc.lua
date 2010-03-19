@@ -264,8 +264,8 @@ mytextclock = widget({ type = "textbox", align="right" })
 pipelets.register_fmt(mytextclock, "date", " $1 ")
 
 -- Mountbox
-mymountbox = widget({ type = "textbox", align="right" })
-pipelets.register( mymountbox, "mmount")
+mympdbox = widget({ type = "textbox", align="right" })
+pipelets.register( mympdbox, "mpd")
 
 -- BatteryBox
 mybatbox = widget({ type = "textbox", align="right" })
@@ -362,7 +362,7 @@ for s = 1, screen.count() do
     mybottom[s] = awful.wibox({ position = "bottom", screen = s, })
     mybottom[s].widgets = {
 		mybatbox,
-		mymountbox,
+		mympdbox,
 		layout = awful.widget.layout.horizontal.leftright
 	}
 
