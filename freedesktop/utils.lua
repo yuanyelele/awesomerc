@@ -3,6 +3,7 @@
 local io = io
 local table = table
 local ipairs = ipairs
+local os = os
 
 module("freedesktop.utils")
 
@@ -42,6 +43,7 @@ function lookup_icon(arg)
         local icon_path = {}
         local icon_theme_paths = {}
         if icon_theme then
+            table.insert(icon_theme_paths, os.getenv('HOME') .. '/.local/share/icons' .. icon_theme .. '/')
             table.insert(icon_theme_paths, '/usr/share/icons/' .. icon_theme .. '/')
             -- TODO also look in parent icon themes, as in freedesktop.org specification
         end
@@ -63,6 +65,8 @@ function lookup_icon(arg)
             end
         end
         -- lowest priority fallbacks
+        table.insert(icon_path,  os.getenv('HOME') .. '/.local/share/pixmaps/')
+        table.insert(icon_path,  os.getenv('HOME') .. '/.local/share/icons/')
         table.insert(icon_path,  '/usr/share/pixmaps/')
         table.insert(icon_path,  '/usr/share/icons/')
 
