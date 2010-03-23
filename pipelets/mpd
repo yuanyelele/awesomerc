@@ -26,16 +26,14 @@ def main():
 	except SocketError:
 		sys.exit(1)
 
-
 	max_artist_len = 30
-	max_album_len = 80
-	max_title_len = 80
+	max_album_len = 70
+	max_title_len = 70
 
 	artist_index = 0
 	album_index = 0
 	title_index = 0
 	
-
 	while True:
 		status = client.status()
 		while status['state'] == 'stop':
