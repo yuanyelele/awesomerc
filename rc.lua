@@ -182,8 +182,6 @@ env = {
 	browser = "uzbl-browser",
 	man = "sakura -e 'man ",
 	terminal = "sakura", 
-	screen = "sakura -e screen",
-	terminal_root = "sakura -e 'su -c screen'",
 	im = "pidgin",
 	editor = "sakura -e 'vim ",
 	home_dir = os.getenv("HOME"),
@@ -465,19 +463,15 @@ end
 -- Bind keyboard digits
 globalkeys = awful.util.table.join(
 
-    -- Main menu
-    awful.key({ altkey            }, "Escape", function() myrc.mainmenu.show(mymainmenu,true) end),
-
-    -- Awesome control
-    awful.key({ modkey, "Control" }, "q", awesome.quit),
-    awful.key({ modkey, "Control" }, "r", function() 
-        mypromptbox[mouse.screen].widget.text = awful.util.escape(awful.util.restart())
-    end),
-
-    -- Application hotkeys
-    awful.key({ modkey            }, "f", function () awful.util.spawn(env.browser) end),
-    awful.key({ modkey            }, "e", function () awful.util.spawn(env.screen)  end),
-    awful.key({ modkey            }, "Scroll_Lock", function () awful.util.spawn(env.locker) end),
+	-- Application hotkeys
+	awful.key({ modkey            }, "f", function () awful.util.spawn(env.browser) end),
+	awful.key({ modkey            }, "i", function () awful.util.spawn(env.im) end),
+	awful.key({ modkey            }, "e", function () awful.util.spawn(env.terminal)  end),
+    	awful.key({ modkey, "Control" }, "q", awesome.quit),
+	awful.key({ altkey            }, "Escape", function() myrc.mainmenu.show_at(mymainmenu,true) end),
+	awful.key({ modkey, "Control" }, "r", function() 
+		mypromptbox[mouse.screen].widget.text = awful.util.escape(awful.util.restart())
+	end),
     awful.key({ modkey            }, "r", function () mypromptbox[mouse.screen]:run() end),
     awful.key({ modkey,           }, "m", function () run_or_raise("gmpc", { class = "Gmpc" }) end),
     awful.key({ modkey            }, "p", function () awful.util.spawn("pidgin") end),
